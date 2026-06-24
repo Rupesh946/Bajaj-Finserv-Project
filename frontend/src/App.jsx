@@ -15,7 +15,11 @@ import {
 import './App.css';
 
 // API Endpoint configurations
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/bfhl';
+let rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4000/bfhl';
+if (rawApiUrl && !rawApiUrl.endsWith('/bfhl')) {
+  rawApiUrl = rawApiUrl.replace(/\/$/, '') + '/bfhl';
+}
+const API_URL = rawApiUrl;
 
 // Identity settings
 const STUDENT_USER_ID = "rupesh_231099";
