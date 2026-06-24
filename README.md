@@ -1,73 +1,100 @@
-# Chitkara Full Stack Developer Challenge - Bajaj Finserv Health (BFHL) Submission
+# Chitkara Full Stack Developer Challenge - Graph Hierarchy Visualizer
 
-This repository contains the complete full-stack solution for Round 1 of the Chitkara Full Stack Engineering Challenge. It features a robust Node.js backend REST API and a responsive React client interface with dynamic filtering.
-
-## Repository Contents
-
-* **[`/backend`](file:///c:/Users/Rupesh/OneDrive/Desktop/Bajaj%20Finserv/backend)**: Express Node.js API with custom base64 file validators and element sorting.
-* **[`/frontend`](file:///c:/Users/Rupesh/OneDrive/Desktop/Bajaj%20Finserv/frontend)**: High-fidelity Vite-React interface supporting real-time filter pills and attachment helpers.
+This repository contains the complete full-stack solution for the Chitkara Full Stack Engineering Challenge, featuring a Node.js Express backend and a React (Vite) visual client dashboard.
 
 ---
 
-## Identity Parameters
-All API responses return the student parameters approved for this challenge:
-* **User ID**: `rupesh_24062002`
-* **Email**: `rupesh.dev@chitkara.edu.in`
-* **Roll Number**: `2110991234`
+## Identity Details
+All API responses return the student parameters:
+* **User ID**: `rupesh_231099`
+* **Email**: `rupesh2276.be23@chitkara.edu.in`
+* **Roll Number**: `2310992276`
 
 ---
 
-## System Requirements
+## Workspace Structure
+* **[`/backend`](file:///c:/Users/Rupesh/OneDrive/Desktop/Bajaj%20Finserv/backend)**: Graph hierarchy edge validation, cycle DFS checks, diamond dependency resolvers, and summary compiler.
+* **[`/frontend`](file:///c:/Users/Rupesh/OneDrive/Desktop/Bajaj%20Finserv/frontend)**: Cyberpunk dark glow visual client, recursive visual tree rendering, example payloads pre-loaders, and multi-select pill checkboxes.
 
-Ensure you have **Node.js (v18+)** installed.
+---
 
-### Quick Setup
+## Running Locally
 
-#### 1. Setup Backend
-Open a terminal and run:
+### 1. Launch Backend
+Navigate to `/backend` directory and run:
 ```bash
 cd backend
 npm install
 npm start
 ```
-The server will run on [http://localhost:4000](http://localhost:4000).
+The graph engine starts on [http://localhost:4000](http://localhost:4000).
 
-#### 2. Setup Frontend
-Open a new terminal and run:
+### 2. Run Backend Tests
+Run the automated edge cases test suite in a separate terminal:
+```bash
+node backend/test.js
+```
+
+### 3. Launch Frontend
+Navigate to `/frontend` directory and run:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-The client dashboard will load on [http://localhost:3000](http://localhost:3000).
+The React dashboard launches on [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## API Documentation
+## Deployed Live Links
+
+* **Hosted API base URL**: `https://<YOUR_RENDER_BACKEND_URL>`
+* **Hosted Frontend URL**: `https://<YOUR_VERCEL_FRONTEND_URL>`
+* **Public GitHub Repository**: [https://github.com/Rupesh946/Bajaj-Finserv-Project](https://github.com/Rupesh946/Bajaj-Finserv-Project)
+
+*(Note: Replace placeholders above with your deployed urls).*
+
+---
+
+## API Specifications
 
 ### POST `/bfhl`
-Processes data arrays and optional file metadata.
+Processes edge relation strings and compiles connected components.
 
-* **Sample Payload**:
-  ```json
-  {
-    "data": ["A", "1", "324", "M", "a", "c"],
-    "file_b64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA..."
-  }
+* **Sample Curl Command**:
+  ```bash
+  curl -X POST http://localhost:4000/bfhl \
+    -H "Content-Type: application/json" \
+    -d '{"data": ["A->B", "A->C", "B->D", "hello"]}'
   ```
-* **Sample Response**:
+
+* **Sample JSON Output**:
   ```json
   {
-    "is_success": true,
-    "user_id": "rupesh_24062002",
-    "email": "rupesh.dev@chitkara.edu.in",
-    "roll_number": "2110991234",
-    "numbers": ["1", "324"],
-    "alphabets": ["A", "M", "a", "c"],
-    "highest_lowercase_alphabet": ["c"],
-    "file_valid": true,
-    "file_mime_type": "image/png",
-    "file_size_kb": 0.05
+    "user_id": "rupesh_231099",
+    "email_id": "rupesh2276.be23@chitkara.edu.in",
+    "college_roll_number": "2310992276",
+    "hierarchies": [
+      {
+        "root": "A",
+        "tree": {
+          "A": {
+            "B": {
+              "D": {}
+            },
+            "C": {}
+          }
+        },
+        "depth": 3
+      }
+    ],
+    "invalid_entries": ["hello"],
+    "duplicate_edges": [],
+    "summary": {
+      "total_trees": 1,
+      "total_cycles": 0,
+      "largest_tree_root": "A"
+    }
   }
   ```
 
