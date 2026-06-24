@@ -22,7 +22,7 @@ if (rawApiUrl && !rawApiUrl.endsWith('/bfhl')) {
 const API_URL = rawApiUrl;
 
 // Identity settings
-const STUDENT_USER_ID = "rupesh_231099";
+const STUDENT_USER_ID = "rupesh_25102003";
 const STUDENT_EMAIL = "rupesh2276.be23@chitkara.edu.in";
 const STUDENT_ROLL = "2310992276";
 

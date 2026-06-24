@@ -6,7 +6,7 @@ This repository contains the complete full-stack solution for the Chitkara Full 
 
 ## Identity Details
 All API responses return the student parameters:
-* **User ID**: `rupesh_231099`
+* **User ID**: `rupesh_25102003`
 * **Email**: `rupesh2276.be23@chitkara.edu.in`
 * **Roll Number**: `2310992276`
 
